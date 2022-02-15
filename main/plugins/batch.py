@@ -8,7 +8,7 @@ Plugin for both public & private channels!
 import time, os
 
 from .. import bot as Drone
-from .. import userbot, Bot,
+from .. import userbot, Bot, AUTH
 from .. import FORCESUB as fs
 from main.plugins.pyroplug import check, get_bulk_msg
 from main.plugins.helpers import get_link, screenshot
@@ -40,10 +40,10 @@ async def _batch(event):
         await event.reply(r)
         return       
     if f'{event.sender_id}' in batch:
-        return await event.reply("You've already started one batch, wait for it to complete you dumbfuck !")
+        return await event.reply("You've already started one batch, wait for it to complete you dumbfuck owner!")
     async with Drone.conversation(event.chat_id) as conv: 
         if s != True:
-            await conv.send_message("Send me the message link you want to start saving from, as a reply to this message.\n @TEAM_SILENT_KING | @ITS_NOT_ROMEO", buttons=Button.force_reply())
+            await conv.send_message("Send me the message link you want to start saving from, as a reply to this message.", buttons=Button.force_reply())
             try:
                 link = await conv.get_reply()
                 try:
@@ -98,5 +98,6 @@ async def run_batch(userbot, client, sender, link, _range):
         time.sleep(timer)
         await protection.delete()
             
+                           
                 
 
