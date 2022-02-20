@@ -31,7 +31,7 @@ async def get_pvt_content(event, chat, id):
     
 
 
-@bot.on(events.NewMessage(pattern="^/batch"))
+@Drone.on(events.NewMessage(pattern="^/batch"))
 async def _batch(event):
     if not event.is_private:
         return
